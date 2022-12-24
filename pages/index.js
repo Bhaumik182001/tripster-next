@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import Banner from '../components/Banner'
 import SmallCard from '../components/SmallCard'
 
-export default function Home() {
+export default function Home({smallCardData}) {
   return (
     <div className="">
       <Head>
@@ -15,11 +15,31 @@ export default function Home() {
 
        <Header />
        <Banner />
+       <main className='max-w-7xl mx-auto px-8 sm:px-18'>
+       <p className='mt-8 mb-8 text-white font-semibold text-4xl'>Explore Nearby</p>
 
-       <p className='mt-8 text-white font-semibold text-4xl'>Explore Nearby</p>
+<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+{smallCardData.map(({img, location, distance})=>{
+  return(
+    <SmallCard img={img} location={location} distance={distance} key={img}/>
+  )
+})}
+</div>
+       </main>
 
-      <SmallCard />
+      
+      
       
     </div>
   )
 }
+
+
+export async function getStaticProps(){
+const smallCardData  = await fetch("https://www.jsonkeeper.com/b/4G1G").then(res=>res.json());
+return {
+  props: {
+    smallCardData
+  }
+}
+} 

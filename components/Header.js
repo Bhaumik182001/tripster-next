@@ -6,17 +6,17 @@ import {GlobeAltIcon} from "@heroicons/react/24/solid"
 
 function Header() {
   return (
-    <div className='grid grid-cols-3 p-4 shadow-lg sticky top-0 z-50'>
+    <div className='grid grid-cols-3 p-4 shadow-lg sticky top-0 z-50 bg-black'>
         <div className='relative h-12 flex items-center  my-auto cursor-pointer'>
         <Image src="https://i.imgur.com/ZNKoZzY.png" fill className='object-contain object-left'/>
         
         </div>
         <div className='flex border-2 rounded-full py-1 px-3 cursor-pointer'>
-            <input type="text" placeholder="Search here..." className='bg-transparent outline-none flex-grow' />
+            <input type="text" placeholder="Search here..." className='bg-transparent outline-none flex-grow text-white' />
             <MagnifyingGlassIcon className='h-8 rounded-full hidden lg:inline my-auto' />
         </div>
         <div className='flex justify-end'>
-            <div className='hover:text-white flex cursor-pointer'>
+            <div className='hover:text-white flex cursor-pointer transfrom transition duration-300 ease-out'>
             <p className='hidden lg:inline my-auto pr-2'>Become a Member</p>
             <GlobeAltIcon className='h-8 my-auto'/>
             </div>
