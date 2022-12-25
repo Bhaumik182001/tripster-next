@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["i.imgur.com", "a0.muscache.com", "links.papareact.com"]
+    domains: ["i.imgur.com", "a0.muscache.com", "links.papareact.com", "www.rebrand.ly"]
   }
 }
 

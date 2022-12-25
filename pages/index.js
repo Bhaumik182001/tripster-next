@@ -3,8 +3,11 @@ import Image from 'next/image'
 import Header from '../components/Header'
 import Banner from '../components/Banner'
 import SmallCard from '../components/SmallCard'
+import MediumCard from '../components/MediumCard'
+import LargeCard from '../components/LargeCard'
+import Footer from '../components/Footer'
 
-export default function Home({smallCardData}) {
+export default function Home({smallCardData, mediumData}) {
   return (
     <div className="">
       <Head>
@@ -16,30 +19,44 @@ export default function Home({smallCardData}) {
        <Header />
        <Banner />
        <main className='max-w-7xl mx-auto px-8 sm:px-18'>
+       
        <p className='mt-8 mb-8 text-white font-semibold text-4xl'>Explore Nearby</p>
 
-<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-{smallCardData.map(({img, location, distance})=>{
-  return(
-    <SmallCard img={img} location={location} distance={distance} key={img}/>
-  )
-})}
-</div>
-       </main>
-
-      
-      
-      
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+      {smallCardData.map(({img, location, distance})=>{
+        return(
+          <SmallCard img={img} location={location} distance={distance} key={img}/>
+        )
+      })}
     </div>
+
+      <p className='ml-3 mt-8 mb-8 text-white font-semibold text-4xl'>Live Anywhere</p>
+
+      <div className='flex flex-nowrap overflow-scroll scrollbar-hide'>
+        {mediumData.map(item=>{
+          return(
+            <MediumCard img={item.img} title={item.title}/>
+          )
+        })}
+      </div>
+
+      <LargeCard title="The Greatest Outdoors" description="whitelist curated by Airbnb" buttonText="Get Inspired" img="https://www.rebrand.ly/mbmdn93"/>
+  </main>
+
+  <Footer />
+</div>
   )
 }
 
 
 export async function getStaticProps(){
 const smallCardData  = await fetch("https://www.jsonkeeper.com/b/4G1G").then(res=>res.json());
+const mediumData = await fetch("https://www.jsonkeeper.com/b/072E").then(res=>res.json());
+
 return {
   props: {
-    smallCardData
+    smallCardData,
+    mediumData
   }
 }
 } 
