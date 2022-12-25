@@ -35,7 +35,7 @@ export default function Home({smallCardData, mediumData}) {
       <div className='flex flex-nowrap overflow-scroll scrollbar-hide'>
         {mediumData.map(item=>{
           return(
-            <MediumCard img={item.img} title={item.title}/>
+            <MediumCard key={item.img} img={item.img} title={item.title}/>
           )
         })}
       </div>
