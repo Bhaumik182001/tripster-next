@@ -7,7 +7,7 @@ import InfoCard from '../components/InfoCard';
 import Map from 'react-map-gl';
 import MapContainer from '../components/MapContainer';
 
-function search({data}) {
+function Search({data}) {
     const [moreFilters, setMoreFilters] = useState(false);
     const router = useRouter();
     const {input, startingDate, lastDate, guests} = router.query;
@@ -68,4 +68,4 @@ export async function getStaticProps() {
     }
   }
 
-export default search
+export default Search
