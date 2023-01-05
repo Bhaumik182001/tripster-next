@@ -6,8 +6,25 @@ import SmallCard from '../components/SmallCard'
 import MediumCard from '../components/MediumCard'
 import LargeCard from '../components/LargeCard'
 import Footer from '../components/Footer'
+import { useRouter } from 'next/router'
 
 export default function Home({smallCardData, mediumData}) {
+  const router = useRouter();
+
+  
+
+  const pushSearchForExplore =(place) => {
+    router.push({
+      pathname: '/search',
+      query: {
+        input: place,
+        startingDate: new Date().toDateString(),
+        lastDate: new Date().toDateString(),
+        guests: numberOfGuests
+      }
+    })
+  }
+
   return (
     <div className="">
       <Head>
