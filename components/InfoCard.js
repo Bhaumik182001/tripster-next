@@ -21,7 +21,7 @@ function InfoCard({title, img, location, description, star, price, total, long, 
             <div className='border-b w-10 pt-2'/>
             <p className='pt-2 text-sm text-gray-500'>{description}</p>
             <div className='flex  justify-between items-end pt-5'>
-                <p className='flex items-center'><StarIcon className='text-yellow-300 h-5'/>{star}</p>
+                <p className='flex items-center text-xl'><StarIcon className='text-yellow-300 h-7'/>{star}</p>
                 <div >
                     <p className='text-lg font-semibold pb-2 lg:text-2xl'>{price}</p>
                     <p className='text-right font-extralight'>{total}</p>

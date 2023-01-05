@@ -19,7 +19,7 @@ function Search({data}) {
     <div>
         <Header />
         <main className='pt-10 flex'>
-          <section>
+          <section className='px-5'>
           <h3>{`300+ stays - ${range} - for ${guests} guests`}</h3>
             <h2 className='text-semibold text-4xl'>{`Stays in ${input}`}</h2>
             <div className='flex mt-5 whitespace-nowrap overflow-x-scroll cursor-pointer py-3 scrollbar-hide max-w-[800px]'>
@@ -40,7 +40,7 @@ function Search({data}) {
                   </>}
             </div>
 
-            <div className='mt-5 p-10'>
+            <div className='mt-5 p-5'>
                 {data.map(({title, img,  location, description, star, price, total, long, lat})=>{
                     return <InfoCard key={img} title={title} img={img} location={location} description={description} star={star} price={price} total={total} long={long} lat={lat}/>
                 })}

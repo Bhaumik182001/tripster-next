@@ -29,7 +29,8 @@ function MapContainer({searchResult}) {
     {...viewport}
     mapboxAccessToken="pk.eyJ1Ijoic29tZS1qdW5pb3ItZGV2ZWxvcGVyIiwiYSI6ImNsYnkzZWM5ZDBjd2gzcXBpaTNucTd2Z2wifQ.53AwX15zK6RuJx1qQn_aCg"
     mapStyle="mapbox://styles/some-junior-developer/clby3q757000h14s4347kvp38"
-    onClick={(res)=>setViewport(res)}
+    //onClick={(res)=>setViewport(res)}
+    onMove={(res)=>setViewport(res)}
     >
       {searchResult.map((res)=>(
         <div key={res.long}>
