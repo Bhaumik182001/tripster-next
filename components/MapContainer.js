@@ -26,6 +26,7 @@ function MapContainer({searchResult}) {
   return (
 
     <Map
+    
     {...viewport}
     mapboxAccessToken="pk.eyJ1Ijoic29tZS1qdW5pb3ItZGV2ZWxvcGVyIiwiYSI6ImNsYnkzZWM5ZDBjd2gzcXBpaTNucTd2Z2wifQ.53AwX15zK6RuJx1qQn_aCg"
     mapStyle="mapbox://styles/some-junior-developer/clby3q757000h14s4347kvp38"
