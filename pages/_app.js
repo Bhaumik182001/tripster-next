@@ -1,6 +1,8 @@
 import '../styles/globals.css'
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from 'next/router';
+import { SessionProvider } from "next-auth/react"
+
 
 const progress = new ProgressBar({
     // The size (height) of the progress bar.
@@ -23,8 +25,12 @@ Router.events.on('routeChangeStart', progress.start)
 Router.events.on('routeChangeComplete', progress.finish)
 Router.events.on('routeChangeError', progress.finish)
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps: {session, ...pageProps} }) {
+  return(
+    <SessionProvider session={session}>
+    <Component {...pageProps} />
+  </SessionProvider>
+  )
 }
 
 export default MyApp

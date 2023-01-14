@@ -1,17 +1,19 @@
 import Image from 'next/image'
-import React, { use, useState } from 'react'
-import {BeakerIcon, MagnifyingGlassIcon, Bars3Icon, UserIcon, UsersIcon} from "@heroicons/react/24/outline"
+import React, { useState } from 'react'
+import {MagnifyingGlassIcon, ArrowRightOnRectangleIcon, Bars3Icon, UserIcon, UsersIcon} from "@heroicons/react/24/outline"
 import {GlobeAltIcon} from "@heroicons/react/24/solid"
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { useRouter } from 'next/router'
-import { ro } from 'date-fns/locale';
 import { Popover, Transition } from '@headlessui/react'
+import { useSession, signIn, signOut } from "next-auth/react"
+
+
 
 
 function Header() {
-
+  const { data: session } = useSession()
   const [input, setInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -37,7 +39,7 @@ function Header() {
     })
   }
 
-  
+
 
   const selectionRange = {
     startDate: startDate,
@@ -60,15 +62,29 @@ function Header() {
              type="text" placeholder="Search here..." className='bg-transparent outline-none flex-grow text-white' />
             <MagnifyingGlassIcon className='h-8 rounded-full hidden lg:inline my-auto' />
         </div>
-        <div className='flex justify-end'>
+        <div className='flex justify-end' onClick={()=>{router.push('/member')}}>
             <div className='hover:text-white flex cursor-pointer transfrom transition duration-300 ease-out'>
             <p className='hidden lg:inline my-auto pr-2'>Become a Member</p>
             <GlobeAltIcon className='h-8 my-auto'/>
             </div>
             
             <div className='ml-4 flex bg-white text-black rounded-full px-6 mx-2 '>
-            <Bars3Icon className='h-6 my-auto border-r-2 pr-3 cursor-pointer' />
-            <UserIcon className='h-6 my-auto pl-3 cursor-pointer'/>
+            {session ?
+             <div className='my-auto cursor-pointer border-r-2 pr-3' onClick={()=>signOut()}>
+              <h2 className='text-sm font-semibold'>Welcome,</h2>
+              <p className='text-xs font font-semibold'>{`${session?.user?.name}!`}</p>
+             </div> 
+             : 
+             <div className='my-auto cursor-pointer border-r-2 pr-3' onClick={() => signIn()}>
+              <p>Sign In</p>
+             </div>
+            }
+            {session ? 
+            <ArrowRightOnRectangleIcon className='h-6 my-auto pl-3 cursor-pointer' onClick={()=>signOut()}/>
+          : 
+          <UserIcon className='h-6 my-auto pl-3 cursor-pointer' onClick={() => signIn()}/>
+            }
+            
             </div>
         </div>
         {input && 
