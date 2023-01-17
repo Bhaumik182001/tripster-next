@@ -8,6 +8,7 @@ import { DateRangePicker } from 'react-date-range';
 import { useRouter } from 'next/router'
 import { Popover, Transition } from '@headlessui/react'
 import { useSession, signIn, signOut } from "next-auth/react"
+import { Dropdown } from 'semantic-ui-react'
 
 
 
@@ -48,14 +49,14 @@ function Header() {
   }
 
   return (
-    <div className='grid grid-cols-3 p-4 shadow-lg sticky top-0 z-50 bg-black'>
+    <div className='grid grid-cols-3 p-4 shadow-lg sticky top-0 z-10 bg-black'>
         <div
         onClick={()=>{router.push('/')}}
         className='relative h-12 flex items-center  my-auto cursor-pointer'>
         <Image src="https://i.imgur.com/ZNKoZzY.png" fill className='object-contain object-left'/>
         
         </div>
-        <div className='flex border-2 rounded-full py-1 px-3 cursor-pointer'>
+        <div className='flex border-2 rounded-full py-1 px-3 cursor-pointer z-50'>
             <input
              value={input}
              onChange={(e)=>setInput(e.target.value)}
@@ -88,37 +89,32 @@ function Header() {
             </div>
         </div>
         {input && 
-        <Popover className="relative">
-           <div className='flex mt-2 flex-col mx-auto col-span-3 rounded-full'>
-            <DateRangePicker
-            
-            minDate={new Date()}
-        ranges={[selectionRange]}
-        onChange={handleSelect}
-      />
-      <div className='flex justify-between p-2 pt-3'>
-          <p className='text-2xl'>Number of Guests</p>
-          <div className='flex'>
+
+      <div className='z-80 top-20  content-center w-full items-center bg-transparent  absolute '>
+        <div className='bg-white px-5 py-1 mt-2 rounded-xl shadow-2xl flex  flex-col mx-auto col-span-3  p-50 max-w-[550px]'>
+        <DateRangePicker minDate={new Date()} ranges={[selectionRange]} onChange={handleSelect} />
+        <div className='flex justify-between p-2 pt-3 bg-white text-black border-t-2 border-b-2'>
+          <p className='text-2xl text-black'>Number of Guests</p>
+          <div className='flex bg-white'>
             <UsersIcon className='h-7 my-auto mr-3'/>
             <input
             onChange={(e)=>setNumberOfGuests(e.target.value)}
             value={numberOfGuests} 
-            type="number" className='w-9 text-lg text-white bg-transparent my-auto'/>
+            type="number" className='w-9 text-lg  bg-transparent my-auto'/>
           </div>
-      </div>
-      <div className='flex'>
-        <button
-          onClick={()=>setInput("")}
-         className='flex-grow text-lg hover:text-white hover:scale-105 transfrom transition duration-100 ease-out'>Cancel</button>
-        <button
-        onClick={()=> pushSearch()}
-         className='flex-grow text-lg hover:text-white hover:scale-105 transfrom transition duration-100 ease-out'>Search</button>
-      </div>
         </div>
-        </Popover>
+        <div className='flex bg-white text-gray-800 hover:text-black pb-3'>
+          <button
+            onClick={()=>setInput("")}
+            className='flex-grow mt-2 text-lg hover:text-black hover:scale-105 transfrom transition duration-100 ease-out'>Cancel</button>
+          <button
+          onClick={()=> pushSearch()}
+            className='flex-grow mt-2 text-lg hover:text-black hover:scale-105 transfrom transition duration-100 ease-out'>Search</button>
+        </div>
+        </div>
+      </div>
        
-        
-        }
+       }
         
     </div>
   )
