@@ -16,10 +16,7 @@ const stripePromise = loadStripe(process.env.stripe_public_key);
 function Reserve() {
   const router = useRouter();
   const {title ,description, image, price, location, star, guests, startingDate, lastDate, startingDay, endingDay} = router.query;
-  const [finalTitle, setFinalTitle] = useState(title);
-  const [finalDescription, setFinalDescription] = useState(description);
-  const [beginDate, setBeginDate] = useState(startingDate)
-  const [endDate, setEndDate] = useState(lastDate)
+ 
 
   const createReserveSession = async () => {
     const stripe = await stripePromise;
