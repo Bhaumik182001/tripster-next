@@ -37,7 +37,7 @@ function Reserve() {
   }
   
 
-    const totalNights =  (parseInt(endDate.slice(8,11))-parseInt(beginDate.slice(8,11)))+1;
+    const totalNights =  (parseInt(startingDate.slice(8,11))-parseInt(lastDate.slice(8,11)))+1;
     const totalPrice = totalNights * parseInt(price);
     const cleaningFee = (totalPrice/15).toFixed(2);
     const serviceFee = (totalPrice/64.777).toFixed(2);
