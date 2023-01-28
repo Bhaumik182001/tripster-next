@@ -40,7 +40,7 @@ function Search({data}) {
 
             <div className='mt-5 p-5'>
                 {data.map(({title, img,  location, description, star, price, total, long, lat})=>{
-                    return <InfoCard key={img} title={title} img={img} location={location} description={description} star={star} price={price} total={total} long={long} lat={lat}/>
+                    return <InfoCard key={img} title={title} img={img} location={location} description={description} star={star} price={price} total={total} long={long} lat={lat} startingDate={startingDate} lastDate={lastDate} guests={guests}/>
                 })}
                 
             </div>

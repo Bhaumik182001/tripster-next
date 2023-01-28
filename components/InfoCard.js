@@ -1,14 +1,39 @@
 import Image from 'next/image';
 import { HeartIcon } from "@heroicons/react/24/outline"
 import { StarIcon } from "@heroicons/react/24/solid"
-
+import { useRouter } from 'next/router'
 
 
 import React from 'react'
 
-function InfoCard({title, img, location, description, star, price, total, long, lat}) {
+
+function InfoCard({title, img, location, description, star, price, total, long, lat, startingDate, lastDate, guests}) {
+
+    const router = useRouter();
+
+  
+
+  const pushToReserve =() => {
+    router.push({
+      pathname: '/reserve',
+      query: {
+        title: title,
+        image: img,
+        location: location,
+        description: description,
+        star: star,
+        price: price.slice(1),
+        startingDate: startingDate,
+        lastDate: lastDate,
+        startingday: startingDate.slice(8, 11), 
+        endingDay: lastDate.slice(8, 11),
+        guests: guests
+      }
+    })
+  }
+
   return (
-    <div className='flex py-7 px-2 border-b pr-4 transform transition duration-200 ease-out cursor-pointer hover:scale-105 hover:text-white'>
+    <div onClick={()=>pushToReserve()} className='flex py-7 px-2 border-b pr-4 transform transition duration-200 ease-out cursor-pointer hover:scale-105 hover:text-white'>
         <div className='relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0 '>
             <Image src={img} fill className='object-cover rounded-xl'/>
         </div>
@@ -23,7 +48,7 @@ function InfoCard({title, img, location, description, star, price, total, long, 
             <div className='flex  justify-between items-end pt-5'>
                 <p className='flex items-center text-xl'><StarIcon className='text-yellow-300 h-7'/>{star}</p>
                 <div >
-                    <p className='text-lg font-semibold pb-2 lg:text-2xl'>{price}</p>
+                    <p className='text-lg font-semibold pb-2 lg:text-2xl'>{`$${price.slice(1)}`}</p>
                     <p className='text-right font-extralight'>{total}</p>
                 </div>
             </div>
