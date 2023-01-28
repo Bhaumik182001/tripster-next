@@ -27,6 +27,7 @@ function InfoCard({title, img, location, description, star, price, total, long, 
         lastDate: lastDate,
         startingday: startingDate.slice(8, 11), 
         endingDay: lastDate.slice(8, 11),
+        nights: parseInt(startingDate.slice(8, 11))-parseInt(lastDate.slice(8, 11))+1,
         guests: guests
       }
     })

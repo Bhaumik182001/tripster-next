@@ -10,13 +10,18 @@ import axios from 'axios'
 const stripePromise = loadStripe(process.env.stripe_public_key);
 
 
-
-
-
 function Reserve() {
   const router = useRouter();
-  const {title ,description, image, price, location, star, guests, startingDate, lastDate, startingDay, endingDay} = router.query;
+  const {title ,description, image, price, location, star, guests, nights, startingDate, lastDate, startingDay, endingDay} = router.query;
  
+  const [totalNights, setTotalNights] = useState(1)
+  const [totalPrice, setTotalPrice] = useState(1)
+  const [cleaningFee, setCleaningFee] = useState(1)
+  const [serviceFee, setServiceFee] = useState(1)
+  const [taxes, setTaxes] = useState(1)
+  const [total, setTotal] = useState(1)
+  const [startDateFormat, setStartDateFormat] = useState(1)
+  const [lastDateFormat, setLastDateFormat] = useState(1)
 
   const createReserveSession = async () => {
     const stripe = await stripePromise;
@@ -37,12 +42,18 @@ function Reserve() {
   }
   
 
-    const totalNights =  (parseInt(startingDate.slice(8,11))-parseInt(lastDate.slice(8,11)))+1;
-    const totalPrice = totalNights * parseInt(price);
-    const cleaningFee = (totalPrice/15).toFixed(2);
-    const serviceFee = (totalPrice/64.777).toFixed(2);
-    const taxes = (totalPrice/7.2).toFixed(2);
-    const total = (parseInt(taxes)+parseInt(serviceFee)+parseInt(cleaningFee)+parseInt(totalPrice)).toFixed(2);
+
+  const puttingData = async () => {
+    setStartDateFormat(await startingDay);
+    setLastDateFormat(await endingDay);
+    setTotalNights(await nights);
+    setTotalPrice(await totalNights * parseInt(price));
+    setCleaningFee(await (totalPrice/15).toFixed(2));
+    setServiceFee(await (totalPrice/64.777).toFixed(2));
+    setTaxes(await(totalPrice/7.2).toFixed(2));
+    setTotal(await (parseInt(taxes)+parseInt(serviceFee)+parseInt(cleaningFee)+parseInt(totalPrice)).toFixed(2));
+  }
+puttingData();
 
     console.log();
 
@@ -82,11 +93,11 @@ function Reserve() {
                 <div className='flex border-b-2'>
                   <div className='flex-grow border-r-2 space-y-1 p-2'>
                     <h4 className='text-xs'>CHECK-IN</h4>
-                    <h3 className='text-sm'>{startingDate.slice(3)}</h3>
+                    <h3 className='text-sm'>{startDateFormat}</h3>
                   </div>
                   <div className='flex-grow space-y-1 p-2'>
                     <h4 className='text-xs'>CHECK-OUT</h4>
-                    <h3 className='text-sm'>{lastDate.slice(3)}</h3>
+                    <h3 className='text-sm'>{lastDateFormat}</h3>
                   </div>
                 </div>
                 <div className='p-2 space-y-1'>
