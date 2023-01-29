@@ -34,7 +34,7 @@ function InfoCard({title, img, location, description, star, price, total, long, 
   }
 
   return (
-    <div onClick={()=>pushToReserve()} className='flex py-7 px-2 border-b pr-4 transform transition duration-200 ease-out cursor-pointer hover:scale-105 hover:text-white'>
+    <div onClick={()=>pushToReserve()} className='flex  py-7 px-2 border-b pr-4 transform transition duration-200 ease-out cursor-pointer hover:scale-105 hover:text-white'>
         <div className='relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0 '>
             <Image src={img} fill className='object-cover rounded-xl'/>
         </div>
