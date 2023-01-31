@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
 import InfoCard from '../components/InfoCard';
 import MapContainer from '../components/MapContainer';
+import Head from 'next/head'
 
 function Search({data}) {
     const [moreFilters, setMoreFilters] = useState(false);
@@ -15,6 +16,10 @@ function Search({data}) {
     }
   return (
     <div>
+      <Head>
+        <title>Tripster</title>
+        <link rel="icon" href="https://i.imgur.com/ZNKoZzY.png" />
+      </Head>
         <Header />
         <main className='pt-10 flex'>
           <section className='px-5'>
@@ -40,7 +45,7 @@ function Search({data}) {
 
             <div className='mt-5 p-5'>
                 {data.map(({title, img,  location, description, star, price, total, long, lat})=>{
-                    return <InfoCard key={img} title={title} img={img} location={location} description={description} star={star} price={price} total={total} long={long} lat={lat} startingDate={startingDate} lastDate={lastDate} guests={guests}/>
+                    return <InfoCard key={img} title={title} img={img} location={location} description={description} star={star} price={price} total={`$${total.slice(1)}`} long={long} lat={lat} startingDate={startingDate} lastDate={lastDate} guests={guests}/>
                 })}
                 
             </div>

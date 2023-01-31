@@ -19,7 +19,7 @@ function Member({data}) {
   return (
     <div>
         <Header />
-        <main className='max-w-7xl mx-auto px-8 sm:px-18'>
+        <main className='max-w-7xl mx-auto px-8 sm:px-18 h-[100vh] '>
           {session ?
           <div className='flex'>
             <div className='flex-grow w-full h-90 flex pt-20'>
