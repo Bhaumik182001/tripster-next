@@ -12,7 +12,7 @@ function Search({data}) {
     const {input, startingDate, lastDate, guests} = router.query;
     const range = `${startingDate} - ${lastDate}`;
     const styles = {
-        filterButtons: "border py-2 space-x-3 px-4 mx-3 rounded-full hover:scale-105 active:text-black active:bg-white active:scale-95 cursor-pointer transform transition duration-300 ease-out"
+        filterButtons: "border-2 py-2 space-x-3 px-4 mx-3 rounded-full hover:scale-105 active:text-black active:bg-white active:scale-95 cursor-pointer transform transition duration-300 ease-out"
     }
   return (
     <div>
