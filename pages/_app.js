@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from 'next/router';
 import { SessionProvider } from "next-auth/react"
-
+import Head from 'next/head'
 
 const progress = new ProgressBar({
     // The size (height) of the progress bar.
@@ -28,6 +28,10 @@ Router.events.on('routeChangeError', progress.finish)
 function MyApp({ Component, pageProps: {session, ...pageProps} }) {
   return(
     <SessionProvider session={session}>
+      <Head>
+      <title>Moviepedia</title>
+        <link rel="icon" href="https://i.imgur.com/ZNKoZzY.png" />
+      </Head>
     <Component {...pageProps} />
   </SessionProvider>
   )
