@@ -28,11 +28,14 @@ Router.events.on('routeChangeError', progress.finish)
 function MyApp({ Component, pageProps: {session, ...pageProps} }) {
   return(
     <SessionProvider session={session}>
-      <Head>
-      <title>Moviepedia</title>
-        <link rel="icon" href="https://i.imgur.com/ZNKoZzY.png" />
-      </Head>
-    <Component {...pageProps} />
+        <div className='h-screen overflow-y-scroll bg-slate-200'>
+            <Head>
+                <title>Moviepedia</title>
+                <link rel="icon" href="https://i.imgur.com/ZNKoZzY.png" />
+            </Head>
+            <Component {...pageProps} />
+        </div>
+      
   </SessionProvider>
   )
 }
