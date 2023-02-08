@@ -28,13 +28,13 @@ Router.events.on('routeChangeError', progress.finish)
 function MyApp({ Component, pageProps: {session, ...pageProps} }) {
   return(
     <SessionProvider session={session}>
-        <div className='h-screen overflow-y-scroll bg-slate-200'>
+        
             <Head>
                 <title>Tripster</title>
                 <link rel="icon" href="https://i.imgur.com/ZNKoZzY.png" />
             </Head>
             <Component {...pageProps} />
-        </div>
+        
       
   </SessionProvider>
   )
