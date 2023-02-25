@@ -28,12 +28,15 @@ Router.events.on('routeChangeError', progress.finish)
 function MyApp({ Component, pageProps: {session, ...pageProps} }) {
   return(
     <SessionProvider session={session}>
-        
+        <div>
             <Head>
                 <title>Tripster</title>
+                <meta name="description" content="Buzz Box" />
                 <link rel="icon" href="https://i.imgur.com/ZNKoZzY.png" />
             </Head>
             <Component {...pageProps} />
+      </div>
+            
         
       
   </SessionProvider>
