@@ -146,9 +146,15 @@ puttingData();
               </div>
             </div>
             
-           
+            <div className='mt-10 bg-red-800 max-w-2xl px-5 py-2 rounded-lg'>
+              <p className='text-3xl text-white'>Attention Users ⚠️</p>
+          <p className='text-white font-semibold'>Please do not make any payment, this is just a demo application showing its capability for real-time payments on <span className='text-white font-extrabold text-lg'>dummy data!</span></p>
+          <p className='font-semibold text-white'>-Dev</p>
+        </div>
           </section>
+          
         </main>
+        
         <Footer />
     </div>
   )
