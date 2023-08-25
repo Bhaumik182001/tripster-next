@@ -1,34 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tripster - Destination Booking Web Application
 
-## Getting Started
+**Live Demo**: [Tripster on Vercel](https://tripster-next-bhaumik182001.vercel.app)
 
-First, run the development server:
+Tripster is a destination booking web application built with Next.js and React.js. The app provides accommodation listings based on search inputs like date range, number of guests, and location. Enhanced by Tailwind CSS, the application offers a robust, visually appealing, and stable UI that's responsive across devices. Continue reading to learn more about its features and the technologies involved.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<img src="https://i.imgur.com/PzHvMQk.png" alt="BuzzBox Preview" height="500">
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Table of Contents
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- [Live Demo](#live-demo)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Usage](#usage)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+---
 
-## Learn More
+## Live Demo
 
-To learn more about Next.js, take a look at the following resources:
+Visit the live demo here: [Tripster on Vercel](https://tripster-next-bhaumik182001.vercel.app).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+- **User Authentication**: Authenticate via Google, GitHub, or Discord.
+- **Dynamic Searching**: Listings based on date range, guests, and location.
+- **Payment Processing**: Integrated Stripe for secure transactions.
+- **Real-time Mapping**: Uses Mapbox for real-time location mapping.
+- **Responsive Design**: Adapts to various device aspect ratios.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Technologies
+
+- **Next.js**: For server-side rendering and robustness.
+- **React.js**: For building the user interface.
+- **Stripe**: For payment processing and verification.
+- **Rapid API**: Data sourcing based on search input.
+- **Mapbox**: Real-time mapping and location marking with react-map-gl.
+- **JSONKeeper**: Fallback data storage for API call exhaustion.
+- **Imgur**: Image asset management.
+- **next-auth**: User authentication.
+- **Heroicons**: SVG icon rendering.
+- **TailwindCSS**: Styling for performance and speed.
+- **Vercel**: Hosting and custom domain.
+
+---
+
+## Installation
+
+To run this project locally:
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/your-username/Tripster.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd Tripster
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+4. Set up environment variables:
+
+    ```bash
+    # .env file
+    NEXT_PUBLIC_STRIPE_KEY=your_stripe_key
+    ```
+
+5. Run the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## Usage
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the app.
+
